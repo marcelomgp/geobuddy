@@ -1,0 +1,16 @@
+<h2>Create a new occurrence</h2>
+
+<p>Please, tell us what happened!</p><br>
+
+<%= form_for :occurrence, url: new_occurrence_path do |f| %>
+  <p>
+    <%= f.label :'name:' %><br>
+    <%= f.text_field :name %> 
+  </p>
+  <p>
+    <%= f.label :'description:' %><br>
+    <%= f.text_field :description %> 
+  </p>
+  <p>
+    <%= f.submit 'Register' %>
+<% end %>

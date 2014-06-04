@@ -25,7 +25,7 @@ $(document).ready(function() {
 
   map.on('click', function(e) { 
                                 L.marker(e.latlng, {icon: buddyIcon})
-                                .bindPopup('<a href="http://localhost:3000/ocurrency/new" title="New Ocurrency">New Ocurrency</a>')
+                                .bindPopup('<a href="http://localhost:3000/occurrence/new" title="New Ocurrency">New Ocurrency</a>')
                                 .addTo(map)
                               });
  
