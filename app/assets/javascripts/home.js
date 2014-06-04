@@ -3,7 +3,6 @@ $(document).ready(function() {
   // Map declare
   //var map = new google.maps.Map($('#map')[0], mapOptions);
 
-
   // Map declare
   var map = L.map('map').setView([-22.907675,-43.291499], 14);
 
@@ -20,13 +19,15 @@ $(document).ready(function() {
   });
 
   // add marker to map
-  marker = L.marker([-22.907675,-43.291499], {icon: buddyIcon})
-  marker.bindPopup('Wee.')
-  marker.addTo(map);
+  //marker = L.marker([-22.907675,-43.291499], {icon: buddyIcon})
+  //marker.bindPopup('Wee.')
+  //marker.addTo(map);
 
-  map.on('click', function(e) {
-    L.marker(e.latlng, {icon: buddyIcon}).bindPopup('Wee.').addTo(map);
-  });
+  map.on('click', function(e) { 
+                                L.marker(e.latlng, {icon: buddyIcon})
+                                .bindPopup('<a href="http://localhost:3000/ocurrency/new" title="New Ocurrency">New Ocurrency</a>')
+                                .addTo(map)
+                              });
  
 });
 
