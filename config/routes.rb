@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :occurrences
-  
+    
   root 'home#index'
 
-  get 'occurrence/new'
+  get   'occurrence/new', to: 'occurrence#new'
+  post  'occurrence/new', to: 'occurrence#create'
 
 end

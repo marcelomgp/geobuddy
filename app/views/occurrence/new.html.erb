@@ -1,16 +1,23 @@
-<h2>Create a new occurrence</h2>
+<h2>Welcome to the Police Occurrence Form</h2>
 
-<p>Please, tell us what happened!</p><br>
+<p>Please, tell us what happened!</p>
 
-<%= form_for :occurrence, url: new_occurrence_path do |f| %>
+<%= form_for :occurrence_type, url: occurrence_new_path do |f| %>
   <p>
-    <%= f.label :'name:' %><br>
-    <%= f.text_field :name %> 
+    <%= f.label :'occurrence_type:' %><br>
+    <%= f.select :occurrence_type, OccurrenceType.make_drop_down %> 
   </p>
+
+<% end %>
+
+<%= form_for :occurrence, url: occurrence_new_path do |f| %>
   <p>
     <%= f.label :'description:' %><br>
-    <%= f.text_field :description %> 
+    <%= f.text_area :description %>
   </p>
   <p>
-    <%= f.submit 'Register' %>
+    <%= f.submit 'Create' %>
+  </p>
 <% end %>
+
+<%= link_to 'Back to map', root_path %>
