@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605150544) do
+ActiveRecord::Schema.define(version: 20140606180553) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "occurrence_types", force: true do |t|
     t.string   "occurrence_type"
@@ -25,15 +29,7 @@ ActiveRecord::Schema.define(version: 20140605150544) do
     t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "ocurrencies", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.float    "lat"
-    t.float    "long"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.spatial  "coordinate",  limit: {:srid=>4326, :type=>"point", :geographic=>true}
   end
 
 end

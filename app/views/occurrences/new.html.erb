@@ -12,7 +12,9 @@
 
 <%= form_for :occurrence, url: occurrences_path do |f| %>
   <p>
-    <%= f.label :'description:' %><br>
+    <%= f.hidden_field :coordinate, value: "POINT(#{params[:lat]} #{params[:lng]})" %>
+
+    <%= f.label :description %><br>
     <%= f.text_area :description %>
   </p>
   <p>

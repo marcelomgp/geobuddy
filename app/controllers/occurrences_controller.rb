@@ -5,10 +5,8 @@ class OccurrencesController < ApplicationController
   end
 
   def index
-    @occurrences = Occurrence.all 
-
+    @occurrences = Occurrence.all
     render json: @occurrences
-
   end
 
   def create
@@ -19,7 +17,7 @@ class OccurrencesController < ApplicationController
   end
 
   def strong_params
-    params.require(:occurrence).permit(:description)
+    params.require(:occurrence).permit(:description, :coordinate)
   end
 
 end
