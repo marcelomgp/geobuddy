@@ -8,11 +8,10 @@
 
     OccurrenceType.create(
                           [
-                            {occurrence_type: 'Bank robbery'}, 
                             {occurrence_type: 'Robbery'}, 
-                            {occurrence_type: 'Accident with victim'},
                             {occurrence_type: 'Accident'},
                             {occurrence_type: 'Suspect'},
-                            {occurrence_type: 'Complaint'}
+                            {occurrence_type: 'Complaint'},
+                            {occurrence_type: 'Missing Person'}
                           ]
                          )

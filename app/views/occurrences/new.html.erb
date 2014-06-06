@@ -2,18 +2,16 @@
 
 <p>Please, tell us what happened!</p>
 
-<%#= form_for :occurrence_type, url: occurrence_new_path do |f| %>
-  <%#p>
-    <%#= f.label :'occurrence_type:' %><%#br>
-    <%#= f.select :occurrence_type, OccurrenceType.make_drop_down %> 
-  <%#/p>
-
-<%# end %>
-
 <%= form_for :occurrence, url: occurrences_path do |f| %>
-  <p>
-    <%= f.hidden_field :coordinate, value: "POINT(#{params[:lat]} #{params[:lng]})" %>
+   
+   <%= f.hidden_field :coordinate, value: "POINT(#{params[:lat]} #{params[:lng]})" %> 
 
+  <p>
+    <%= f.label :'occurrence_type:' %><br>
+    <%= f.select :occurrence_type, OccurrenceType.make_drop_down %> 
+  </p>
+
+  <p>
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </p>

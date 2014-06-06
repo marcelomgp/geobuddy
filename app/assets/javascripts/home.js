@@ -25,8 +25,10 @@ $(document).ready(function() {
 
     $.get("/occurrences", function(data) {
         data.map(function(item) { 
+          debugger
           L.marker(item.coordinate, {icon: buddyIcon})
           .addTo(map);
+
           });
     });
 

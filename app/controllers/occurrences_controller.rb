@@ -5,7 +5,7 @@ class OccurrencesController < ApplicationController
   end
 
   def index
-    @occurrences = Occurrence.all
+    @occurrences = Occurrence.all#find(params[:id])
     render json: @occurrences
   end
 

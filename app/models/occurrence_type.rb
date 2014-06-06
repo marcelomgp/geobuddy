@@ -1,4 +1,6 @@
 class OccurrenceType < ActiveRecord::Base
+  
+  has_many :occurrences
 
   def self.make_drop_down
 
