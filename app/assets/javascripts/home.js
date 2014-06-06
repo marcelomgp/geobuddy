@@ -1,5 +1,7 @@
 $(document).ready(function() {
   
+
+  if($("#map").length > 0){
   // Map declare
   var map = L.map('map').setView([-22.907675,-43.291499], 14);
 
@@ -16,9 +18,11 @@ $(document).ready(function() {
   map.on('click', function(e) 
   { 
     L.marker(e.latlng, {icon: buddyIcon})
-    .bindPopup('<a href="http://localhost:3000/occurrence/new" title="New Occurrence">New Occurrence</a>')
+    .bindPopup("<a href=/occurrences/new?lat="+e.latlng.lat+"&lng="+e.latlng.lng+">New Occurrence</a>")
     .addTo(map)
   } );
+
+}
 
 });
 

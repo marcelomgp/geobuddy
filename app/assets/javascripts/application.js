@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require leaflet
 //= require home
-//= require_tree .
