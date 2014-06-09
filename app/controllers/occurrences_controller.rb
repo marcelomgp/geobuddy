@@ -5,15 +5,21 @@ class OccurrencesController < ApplicationController
   end
 
   def index
-    @occurrences = Occurrence.all#find(params[:id])
+    @occurrences = Occurrence.all
     render json: @occurrences
   end
 
   def create
     @occurrence = Occurrence.new(strong_params)
 
-    @occurrence.save
-    redirect_to root_path
+    if @occurrence.save
+      flash[:notice] = "Occurrence created with success!"
+      redirect_to root_path
+    else
+      flash[:notice] = "Error! Verify form fields."
+      render 'new'
+    end
+
   end
 
   def strong_params

@@ -39,6 +39,11 @@ gem 'pry'
 # Use serializer model
 gem "active_model_serializers" 
 
+group :test do 
+  gem 'capybara'
+  gem 'rspec-rails'
+end
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
