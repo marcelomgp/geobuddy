@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20140610200216_occurrences.rb
