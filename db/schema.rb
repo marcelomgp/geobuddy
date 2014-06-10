@@ -18,16 +18,17 @@ ActiveRecord::Schema.define(version: 20140609203238) do
   enable_extension "postgis"
 
   create_table "occurrence_types", force: true do |t|
-    t.string   "occurrence_type"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "occurrences", force: true do |t|
+    t.integer  "occurrence_type_id"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.spatial  "coordinate",  limit: {:srid=>4326, :type=>"point", :geographic=>true}
+    t.spatial  "coordinate",         limit: {:srid=>4326, :type=>"point", :geographic=>true}
   end
 
 end

@@ -23,7 +23,7 @@ class OccurrencesController < ApplicationController
   end
 
   def strong_params
-    params.require(:occurrence).permit(:description, :coordinate)
+    params.require(:occurrence).permit(:occurrence_type_id, :description, :coordinate)
   end
 
 end

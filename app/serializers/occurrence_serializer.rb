@@ -1,3 +1,3 @@
 class OccurrenceSerializer < ActiveModel::Serializer
-  attributes :description, :coordinate
+  attributes :occurrence_type_id, :description, :coordinate
 end
