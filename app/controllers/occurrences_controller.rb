@@ -25,5 +25,5 @@ class OccurrencesController < ApplicationController
   def strong_params
     params.require(:occurrence).permit(:occurrence_type_id, :description, :coordinate)
   end
-
+# [{"coordinate": "POINT (x, y)", "description": },{},{} ]
 end

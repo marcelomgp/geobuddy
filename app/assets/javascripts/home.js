@@ -20,12 +20,13 @@ $(document).ready(function() {
       popupAnchor: [5, -32]
     });    
 
-    // Add a marker by clicking on map
-    map.on('click', function(e) 
+    // Click event function
+    function onClick(e) 
       { 
         L.marker(e.latlng, {icon: buddyIcon})
         .bindPopup("<a href=/occurrences/new?lat="+e.latlng.lat+"&lng="+e.latlng.lng+">New Occurrence</a>")
-        .addTo(map)
+        .addTo(map)   
+      }
 
       /*var bounds = ([L.marker([-22.907675,-43.291499], {icon: buddyIcon}).bindPopup("<a href=/occurrences/new?lat="+e.latlng.lat+"&lng="+e.latlng.lng+">New Occurrence</a>").addTo(map),
                    L.marker([-22.9019527791648, -43.29780578613281], {icon: buddyIcon}).bindPopup("<a href=/occurrences/new?lat="+e.latlng.lat+"&lng="+e.latlng.lng+">New Occurrence</a>").addTo(map),
@@ -34,17 +35,18 @@ $(document).ready(function() {
       map.fitBounds(bounds);
 
       });*/
-    
-    });
+  };
 
-    $.get('/occurrences', function(data) {
-        data.map(function(item) { 
-                                  L.marker(item.coordinate, {icon: buddyIcon})
-                                  .addTo(map) 
-        })
-    });
+$.get('/occurrences', function(data) {
+  data.occurrences.forEach(function(item) {
+    L.marker(item.coordinate, {icon: buddyIcon})
+    .addTo(map)
+  })
+  //alert("Data: " + data.occurrences[0].coordinate);
+});
 
-  }
+map.on('click', onClick);
+map.off('contextmenu', onClick);
 
 });
 
