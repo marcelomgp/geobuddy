@@ -40,7 +40,7 @@ $(document).ready(function() {
     $.get('/occurrences', function(data) {
       data.occurrences.forEach(function(occurrence) {
         L.marker(occurrence.geometry.coordinates, {icon: buddyIcon})
-        .bindPopup("<p>LOLLL")
+        .bindPopup("<p><b>Occurrence Type:</b> "+occurrence.properties.occurrenceType+"<p><b>Description:</b> "+occurrence.properties.description)
         .addTo(map)
       })
     });
