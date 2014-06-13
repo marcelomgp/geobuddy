@@ -6,17 +6,16 @@ class OccurrencesController < ApplicationController
 
   def index
     @occurrences = Occurrence.all
-    render json: @occurrences
   end
 
   def create
     @occurrence = Occurrence.new(strong_params)
 
     if @occurrence.save
-      flash[:notice] = "Occurrence created with success!"
+      flash[:alert] = "Occurrence created with success!"
       redirect_to root_path
     else
-      flash[:notice] = "Error! Verify form fields."
+      flash[:alert] = "Error! Verify form fields."
       render 'new'
     end
 
@@ -25,5 +24,4 @@ class OccurrencesController < ApplicationController
   def strong_params
     params.require(:occurrence).permit(:occurrence_type_id, :description, :coordinate)
   end
-# [{"coordinate": "POINT (x, y)", "description": },{},{} ]
 end

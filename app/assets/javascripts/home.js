@@ -1,5 +1,4 @@
-$(document).ready(function() {
-  
+$(document).ready(function() {  
 
   if($("#map").length > 0){
     
@@ -35,18 +34,17 @@ $(document).ready(function() {
       map.fitBounds(bounds);
 
       });*/
-  };
 
-$.get('/occurrences', function(data) {
-  data.occurrences.forEach(function(item) {
-    L.marker(item.coordinate, {icon: buddyIcon})
-    .addTo(map)
-  })
-  //alert("Data: " + data.occurrences[0].coordinate);
+    map.on('click', onClick);
+
+    $.get('/occurrences', function(data) {
+      data.occurrences.forEach(function(occurrence) {
+        L.marker(occurrence.geometry.coordinates, {icon: buddyIcon})
+        .bindPopup("<p>LOLLL")
+        .addTo(map)
+      })
+    });
+
+  }
+
 });
-
-map.on('click', onClick);
-map.off('contextmenu', onClick);
-
-});
-
