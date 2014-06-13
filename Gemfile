@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+# Postgis gem
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -38,6 +38,9 @@ gem 'pry'
 
 # Use serializer model
 gem "active_model_serializers" 
+
+# Geocoder gem for seed
+gem 'geocoder'
 
 group :test do 
   gem 'capybara'

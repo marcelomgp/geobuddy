@@ -51,6 +51,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.1.0)
+    geocoder (1.2.2)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.0.7)
@@ -159,6 +160,7 @@ DEPENDENCIES
   activerecord-postgis-adapter
   capybara
   coffee-rails (~> 4.0.0)
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   pg
