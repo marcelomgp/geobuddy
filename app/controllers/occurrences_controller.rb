@@ -1,7 +1,11 @@
 class OccurrencesController < ApplicationController
 
+  before_filter :check_coordinates, :only => :new
+
   def new
-    @occurence = Occurrence.new
+    @occurrence = Occurrence.new
+    @occurrence.coordinate = Occurrence.location_point(params[:lat], params[:lng]) 
+    @occurrence.occurrence_type = OccurrenceType.all.sample
   end
 
   def index
@@ -12,13 +16,15 @@ class OccurrencesController < ApplicationController
     @occurrence = Occurrence.new(strong_params)
 
     if @occurrence.save
-      flash[:alert] = "Occurrence created with success!"
       redirect_to root_path
     else
-      flash[:alert] = "Error! Verify form fields."
-      render 'new'
+      render :new
     end
 
+  end
+
+  def check_coordinates
+    redirect_to root_path unless params[:lng].present? and params[:lat].present?
   end
 
   def strong_params
