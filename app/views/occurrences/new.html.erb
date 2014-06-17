@@ -10,7 +10,7 @@
     <%= f.select :occurrence_type_id, make_occurrences_drop_down %> 
   </p>
   <p>
-    <%= f.label :description %><br>
+    <%= f.label :'description:' %><br>
     <%= f.text_area :description %>
   </p>
   <p>
@@ -22,7 +22,7 @@
 
 <% if @occurrence.errors.any? %>
 <div id = "error explanation">
-  <h3><%= pluralize(@occurrence.errors.count, "error") %> prohibited this form from being saved:</h3>
+  <h3><%= pluralize(@occurrence.errors.count, "error") %> found! Verify your form before continuing:</h3>
   <ul>
     <% @occurrence.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
