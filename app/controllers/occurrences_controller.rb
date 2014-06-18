@@ -1,7 +1,5 @@
 class OccurrencesController < ApplicationController
 
-  before_filter :check_coordinates, :only => :new
-
   def new
     @occurrence = Occurrence.new
     @occurrence.coordinate = Occurrence.location_point(params[:lat], params[:lng]) 
@@ -14,7 +12,6 @@ class OccurrencesController < ApplicationController
 
   def create
     @occurrence = Occurrence.new(strong_params)
-
     if @occurrence.save
       redirect_to root_path
     else
@@ -23,11 +20,7 @@ class OccurrencesController < ApplicationController
 
   end
 
-  def check_coordinates
-    redirect_to root_path unless params[:lng].present? and params[:lat].present?
-  end
-
   def strong_params
-    params.require(:occurrence).permit(:occurrence_type_id, :description, :coordinate)
+    params.require(:occurrence).permit!
   end
 end

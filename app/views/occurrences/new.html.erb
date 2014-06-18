@@ -4,7 +4,7 @@
 
 <%= form_for :occurrence, url: occurrences_path do |f| %>
   <p>
-   <%= f.hidden_field :coordinate, value: "POINT(#{params[:lat]} #{params[:lng]})" %> 
+   <%= f.hidden_field :coordinate, value: @occurrence.coordinate %> 
   <p>
     <%= f.label :'occurrence_type:' %><br>
     <%= f.select :occurrence_type_id, make_occurrences_drop_down %> 

@@ -10,7 +10,7 @@
 OccurrenceType.create([{name: 'Robbery'}, {name: 'Accident'}, {name: 'Suspect'}, {name: 'Complaint'}, {name: 'Missing Person'}])
 
 # Create a new random occurrence
-(1..10).each do |n|        
+(1..5).each do |n|        
   occurrence_description_seed = ['Occurrence_seed '+rand(1..100).to_s,
                                 'Occurrence_seed '+rand(1..100).to_s,
                                 'Occurrence_seed '+rand(1..100).to_s,
