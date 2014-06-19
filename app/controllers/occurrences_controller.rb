@@ -12,12 +12,12 @@ class OccurrencesController < ApplicationController
 
   def create
     @occurrence = Occurrence.new(strong_params)
+
     if @occurrence.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Success'
     else
       render :new
     end
-
   end
 
   def strong_params
