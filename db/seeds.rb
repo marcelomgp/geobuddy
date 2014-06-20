@@ -6,8 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Create Occurrence Types
-OccurrenceType.create([{name: 'Robbery'}, {name: 'Accident'}, {name: 'Suspect'}, {name: 'Complaint'}, {name: 'Missing Person'}])
+# Create Occurrence Types if table is empty
+if OccurrenceType.all.empty?
+  OccurrenceType.create([{name: 'Robbery'}, {name: 'Accident'}, {name: 'Suspect'}, {name: 'Complaint'}, {name: 'Missing Person'}])
+end
 
 # Create a new random occurrence
 (1..5).each do |n|        
