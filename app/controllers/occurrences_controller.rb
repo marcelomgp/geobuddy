@@ -3,7 +3,6 @@ class OccurrencesController < ApplicationController
   def new
     @occurrence = Occurrence.new
     @occurrence.coordinate = Occurrence.location_point(params[:lat], params[:lng]) 
-    @occurrence.occurrence_type = OccurrenceType.all.sample
   end
 
   def index
@@ -14,7 +13,8 @@ class OccurrencesController < ApplicationController
     @occurrence = Occurrence.new(strong_params)
 
     if @occurrence.save
-      redirect_to root_path, notice: 'Success'
+      #redirect_to root_path, notice: 'Success'
+      render :index, notice: 'Success'
     else
       render :new
     end

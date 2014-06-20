@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     map.on('click', onClick);
 
-    $.get('/occurrences', function(data) {
+    $.get('/occurrences.json', function(data) {
       data.occurrences.forEach(function(occurrence) {
         L.marker(occurrence.geometry.coordinates, {icon: buddyIcon})
         .bindPopup("<p><b>Occurrence Type:</b> "+occurrence.properties.occurrenceType+"<p><b>Description:</b> "+occurrence.properties.description)

@@ -5,11 +5,11 @@ class CreateoccurrenceTest < ActionDispatch::IntegrationTest
   test "with valid data" do
     visit 'occurrences/new?lat=-22.893413507746303&lng=-43.29265594482422'
 
-    select 'Accident', from: 'Occurrence type:'
+    #select 'Accident', from: 'Occurrence type:'
     fill_in 'Description:', with: 'Testing valid params'
     click_button 'Create'
 
-    #assert page.has_text?('Success')
+    assert page.has_text?('Success')
     assert_equal current_path, '/' 
   end
 
