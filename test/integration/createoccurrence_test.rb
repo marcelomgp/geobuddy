@@ -9,7 +9,7 @@ class CreateoccurrenceTest < ActionDispatch::IntegrationTest
     fill_in 'Description:', with: 'Testing valid params'
     click_button 'Create'
 
-    assert page.has_text?('Success')
+    assert page.has_text?('Occurrence created!')
     assert_equal current_path, '/' 
   end
 
@@ -21,7 +21,7 @@ class CreateoccurrenceTest < ActionDispatch::IntegrationTest
     assert_equal current_path, '/' 
   end
 
-  test "with invalid data: Description" do
+  test "with invalid data" do
     visit 'occurrences/new?lat=-22.89112046369391&lng=-43.271026611328125'
 
     click_button 'Create'

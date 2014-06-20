@@ -10,12 +10,20 @@ class Occurrence < ActiveRecord::Base
   set_rgeo_factory_for_column(:coordinate, RGeo::Geographic.spherical_factory(:srid => 4326))
   
   # defining bounding box
-  def self.within_box(sw_lat, sw_lon, ne_lat, ne_lon)
-    factory = RGeo::Geographic.spherical_factory
-    sw = factory.point(sw_lon, sw_lat)
-    ne = factory.point(ne_lon, ne_lat)
-    window = RGeo::Cartesian::BoundingBox.create_from_points(sw, ne).to_geometry
-    where(:coordinate, window)
+  def self.within_box(w, n, e, s)
+    factory = Occurrence.location_factory
+
+    ne = factory.point(n, e)
+    nw = factory.point(n, w)
+    se = factory.point(s, e)
+    sw = factory.point(s, w)
+
+    ring = factory.linear_ring([ne, nw, sw, se])
+    bbox = factory.polygon(ring)
+
+    self
+      .order(:id => :desc)
+      .where("ST_Intersects(coordinate, :bbox)", :bbox => bbox)
   end
 
   # returns the rgeo factory for :coordinate column

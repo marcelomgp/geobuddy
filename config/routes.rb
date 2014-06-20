@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   #get   'occurrence/new', to: 'occurrence#new'
   #post  'occurrence/new', to: 'occurrence#create'
 
+  post 'occurrences/bbox', to: 'occurrences#bbox'
+
   resources :occurrences, only: [:index, :new, :create]
 
 
