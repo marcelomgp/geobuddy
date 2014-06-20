@@ -5,10 +5,6 @@ $(document).ready(function() {
     // Map declare
     var map = L.map('map').setView([-22.907675,-43.291499], 14);
 
-    var southWest = L.latLng(-22.907675,-43.291499),
-    northEast = L.latLng(-22.407675,-43.091499),
-    bounds = L.latLngBounds(southWest, northEast);
-
     // Add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -17,7 +13,16 @@ $(document).ready(function() {
       iconUrl: 'http://cdn.leafletjs.com/leaflet-0.6.4/images/marker-icon.png',
       iconAnchor: [7, 40],
       popupAnchor: [5, -32]
-    });    
+    });
+
+    var updateReports = function(){
+      bounds = map.getBounds();
+      n = bounds.getNorth();
+      s = bounds.getSouth();
+      e = bounds.getEast();
+      w = bounds.getWest();
+
+    };
 
     // Click event function
     function onClick(e) 
@@ -35,6 +40,12 @@ $(document).ready(function() {
         .addTo(map)
       })
     });
+    
     map.on('click', onClick);
+
+    map.on('moveend', function(){
+      updateReports();
+    });
+    
   }
 });
