@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CreateoccurrenceTest < ActionDispatch::IntegrationTest
+class CreateOccurrenceTest < ActionDispatch::IntegrationTest
 
   test "with valid data" do
     visit 'occurrences/new?lat=-22.893413507746303&lng=-43.29265594482422'
