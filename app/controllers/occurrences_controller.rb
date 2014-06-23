@@ -20,7 +20,6 @@ class OccurrencesController < ApplicationController
   end
 
   def bbox
-    #binding.pry
     @occurrences = Occurrence.within_box(params[:w], params[:n], params[:e], params[:s])
   end
 

@@ -23,36 +23,36 @@ $(document).ready(function() {
         .addTo(map)   
     }
 
+    // Bbox function
     function loadOccurrencies()
     {
-      $.post('/occurrences/bbox.json', {n: map.getBounds().getNorth(), 
-                                s: map.getBounds().getSouth(),
-                                e: map.getBounds().getEast(),
-                                w: map.getBounds().getWest()}, function(data){
-                                  console.log(data);
-                                  data.occurrences.forEach(function(occurrence) {
-                                  L.marker(occurrence.geometry.coordinates, {icon: buddyIcon})
-                                  .bindPopup("<p><b>Occurrence Type:</b> "+occurrence.properties.occurrenceType+"<p><b>Description:</b> "+occurrence.properties.description)
-                                  .addTo(map);
-                                  });
+      $.post('/occurrences/bbox.json', 
+      {
+        n: map.getBounds().getNorth(), 
+        s: map.getBounds().getSouth(),
+        e: map.getBounds().getEast(),
+        w: map.getBounds().getWest()
+      }, 
+      function(data)
+      {
+        console.log(data); // Validates bbox from console log
+        data.occurrences.forEach(function(occurrence) 
+        {
+          L.marker(occurrence.geometry.coordinates, {icon: buddyIcon})
+          .bindPopup(
+                      "<p><b>Occurrence Type:</b> "+occurrence.properties.occurrenceType+
+                      "<p><b>Description:</b> "+occurrence.properties.description
+                    )
+          .addTo(map);
+        });
       });
     }
-
-    // Mount markers
-    /*$.get('/occurrences.json', function(data) {
-      data.occurrences.forEach(function(occurrence) {
-        L.marker(occurrence.geometry.coordinates, {icon: buddyIcon})
-        .bindPopup("<p><b>Occurrence Type:</b> "+occurrence.properties.occurrenceType+"<p><b>Description:</b> "+occurrence.properties.description)
-        .addTo(map)
-      })
-    });*/
     
     map.on('click', onClick);
-
-    map.on('moveend', function(){
+    map.on('moveend', function()
+    {
       loadOccurrencies();
     });
-    loadOccurrencies();
-    
+    loadOccurrencies();    
   }
 });
