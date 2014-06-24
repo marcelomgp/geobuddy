@@ -45,7 +45,7 @@ $(document).ready(function() {
                     )
           .addTo(map);
           // Side bar info
-          content = content + "<p><b>"+occurrence.properties.occurrenceType+"</b></p><p>"+occurrence.properties.description+"</p><br>";
+          content = content + "<p><b>"+occurrence.properties.occurrenceType+"</b></p><p><small>"+occurrence.properties.description+"</small></p><br>";
         });
         $("#sidebar").html(content);
       });
