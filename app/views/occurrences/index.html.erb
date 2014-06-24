@@ -1,8 +1,23 @@
-<div id="map">
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <h1><small>Police Occurrence Prototype Map</small></h1>
+  </div>
 
 <% for type, message in flash %>
   <p class="message <%= type %>">
     <%= message %> 
   </p>
 <% end %>
+
+  <div class="row">
+      <div class="ka-reports">
+        <ul id="reports" class="nav nav-list bs-docs-sidenav afix"></ul>
+      </div>
+    <div id="map-column" class="col-lg-9">
+      <div id="sidebar"></div>
+      <div id="map"></div>
+    </div>
+  </div>
+
+</div>
+

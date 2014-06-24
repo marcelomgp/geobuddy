@@ -24,7 +24,7 @@ $(document).ready(function() {
     }
 
     // Bbox function
-    function loadOccurrencies()
+    function loadOccurrences()
     {
       $.post('/occurrences/bbox.json', 
       {
@@ -35,7 +35,7 @@ $(document).ready(function() {
       }, 
       function(data)
       {
-        console.log(data); // Validates bbox from console log
+        var content = "";
         data.occurrences.forEach(function(occurrence) 
         {
           L.marker(occurrence.geometry.coordinates, {icon: buddyIcon})
@@ -44,15 +44,17 @@ $(document).ready(function() {
                       "<p><b>Description:</b> "+occurrence.properties.description
                     )
           .addTo(map);
+          content = content + "<p><b>"+occurrence.properties.occurrenceType+"</b></p><p>"+occurrence.properties.description+"</p><br>";
         });
+        $("#sidebar").html(content);
       });
     }
     
     map.on('click', onClick);
     map.on('moveend', function()
     {
-      loadOccurrencies();
+      loadOccurrences();
     });
-    loadOccurrencies();    
+    loadOccurrences();
   }
 });
