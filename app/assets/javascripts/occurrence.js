@@ -44,6 +44,7 @@ $(document).ready(function() {
                       "<p><b>Description:</b> "+occurrence.properties.description
                     )
           .addTo(map);
+          // Side bar info
           content = content + "<p><b>"+occurrence.properties.occurrenceType+"</b></p><p>"+occurrence.properties.description+"</p><br>";
         });
         $("#sidebar").html(content);

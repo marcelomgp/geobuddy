@@ -25,9 +25,9 @@
 #sidebar
 {
   height: 700px;
-  width: 10%;
-  float:left;
   overflow-y:auto;
+  min-width: 10%;
+  float:left;
   border: 1px solid #999;
 }
 
